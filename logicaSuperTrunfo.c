@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Desafio Super Trunfo - Países
 // Tema 2: Super Poder e Comparação de Cartas
@@ -33,15 +34,15 @@ int calcularSuperPoder(Carta carta) {
            carta.pontos_turisticos + (int)carta.densidade_populacional + (int)(carta.pib_per_capita / 1000);
 }
 
-// Função para comparar duas cartas com lógica avançada e dois atributos
+// Função para comparar duas cartas com lógica avançada e três atributos
 void compararCartas(Carta carta1, Carta carta2) {
     printf("\nComparação das Cartas %s vs %s:\n", carta1.nome_cidade, carta2.nome_cidade);
 
-    // Lógica avançada com dois atributos: população e PIB
-    if (carta1.populacao > carta2.populacao && carta1.pib > carta2.pib) {
-        printf("%s tem mais população e maior PIB que %s. Vitória!\n", carta1.nome_cidade, carta2.nome_cidade);
-    } else if (carta2.populacao > carta1.populacao && carta2.pib > carta1.pib) {
-        printf("%s tem mais população e maior PIB que %s. Vitória!\n", carta2.nome_cidade, carta1.nome_cidade);
+    // Lógica avançada com três atributos: população, PIB e pontos turísticos
+    if (carta1.populacao > carta2.populacao && carta1.pib > carta2.pib && carta1.pontos_turisticos > carta2.pontos_turisticos) {
+        printf("%s tem mais população, maior PIB e mais pontos turísticos que %s. Vitória!\n", carta1.nome_cidade, carta2.nome_cidade);
+    } else if (carta2.populacao > carta1.populacao && carta2.pib > carta1.pib && carta2.pontos_turisticos > carta1.pontos_turisticos) {
+        printf("%s tem mais população, maior PIB e mais pontos turísticos que %s. Vitória!\n", carta2.nome_cidade, carta1.nome_cidade);
     } else {
         // Lógica adicional para outros atributos ou empates
         if (carta1.area > carta2.area) {
@@ -50,14 +51,6 @@ void compararCartas(Carta carta1, Carta carta2) {
             printf("%s tem maior área que %s.\n", carta2.nome_cidade, carta1.nome_cidade);
         } else {
             printf("Áreas iguais.\n");
-        }
-
-        if (carta1.pontos_turisticos > carta2.pontos_turisticos) {
-            printf("%s tem mais pontos turísticos que %s.\n", carta1.nome_cidade, carta2.nome_cidade);
-        } else if (carta2.pontos_turisticos > carta1.pontos_turisticos) {
-            printf("%s tem mais pontos turísticos que %s.\n", carta2.nome_cidade, carta1.nome_cidade);
-        } else {
-            printf("Pontos turísticos iguais.\n");
         }
 
         if (carta1.super_poder > carta2.super_poder) {
